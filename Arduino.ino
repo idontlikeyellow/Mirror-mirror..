@@ -26,6 +26,7 @@ void on_left() {
 void on_right() {
   Serial.println("backup");
   myMotor->run(BACKWARD);
+  delay(100);
 }
 
 
@@ -38,15 +39,13 @@ void setup() {
 
   AFMS.begin();  // create with the default frequency 1.6KHz
 
-  myMotor->setSpeed(230);
+  myMotor->setSpeed(100);
   myMotor->run(FORWARD);
   myMotor->run(RELEASE);
-  
 }
 
 
 void loop() {
   uint8_t i;
   cmdMessenger.feedinSerialData();
-
 }
