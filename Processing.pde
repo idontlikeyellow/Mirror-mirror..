@@ -69,8 +69,8 @@ void mirror_move_right() {
   if (p.vel.x > 0.5) {
     background(0, 255, 0);
     println("Righty");
-    ser.write(cmdRight); 
-    ser.write(';');
+    ser.write(cmdRight + ";"); 
+//    ser.write(';');
   }
 }
 
@@ -78,8 +78,8 @@ void mirror_move_left() {
   if (p.vel.x < 0.5) {
     background(0, 0, 255);
     println("Lefty");
-    ser.write(cmdLeft); 
-    ser.write(';');
+    ser.write(cmdLeft + ";"); 
+//    ser.write(';');
   }
 }
 
