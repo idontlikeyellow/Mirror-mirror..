@@ -32,13 +32,13 @@ void on_right() {
 
 void on_down() {
   Serial.println("forward_down");
-  myMotor->run(FORWARD);
+  myMotor2->run(FORWARD);
   delay(5);
 }
 
 void on_up() {
   Serial.println("backup_up");
-  myMotor->run(BACKWARD);
+  myMotor2->run(BACKWARD);
   delay(5);
 }
 
@@ -62,6 +62,11 @@ void setup() {
   myMotor->setSpeed(250);
   myMotor->run(FORWARD);
   myMotor->run(RELEASE);
+  
+  myMotor2->setSpeed(250);
+  myMotor2->run(FORWARD);
+  myMotor2->run(RELEASE);
+  
 }
 
 void loop() {
