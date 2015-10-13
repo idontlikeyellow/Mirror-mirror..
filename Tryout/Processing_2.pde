@@ -18,6 +18,8 @@ boolean bDebug = false;
 int cmdStill = 5;
 int cmdLeft = 1;
 int cmdRight = 2;
+int cmdUp = 3;
+int cmdDown = 4;
 
 // model a person in our detection system
 class Person {
@@ -64,6 +66,8 @@ void draw() {
   mirror_move_still();
   mirror_move_right();
   mirror_move_left();
+  mirror_move_up();
+  mirror_move_down();
   ellipse(p.pos.x * width, p.pos.y * height, 20, 20);
 }
 
@@ -89,13 +93,19 @@ void mirror_move_still() {
   } 
 }
 
-//void mirror_move_up() {
-// use firmata to activate the arduino pins that you need to move your mirror
-//}
+void mirror_move_up() {
+  if (p.vel.y > 0.5) {
+    background(0, 150, 0);
+    ser.write(cmdUp + ";");
+  }
+}
 
-//void mirror_move_down() {
-// use firmata to activate the arduino pins that you need to move your mirror
-//}
+void mirror_move_down() {
+  if (p.vel.y > 0.5) {
+    background(0, 100, 0);
+    ser.write(cmdDown + ";");
+  }
+}
 
 void keyPressed() {
   switch(key) {
