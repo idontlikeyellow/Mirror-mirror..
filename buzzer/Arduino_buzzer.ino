@@ -29,14 +29,4 @@ void setup() {
 
 void loop() {
   cmdMessenger.feedinSerialData();
-//
-//  if (Serial.available()) {
-//    msg = Serial.read();
-//    
-//    if(msg == 'B') {
-//      buzz();
-//    }
-//  }
-//  delay(100);
-  
 }
