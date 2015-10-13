@@ -11,7 +11,7 @@ int down = 4;
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
 Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
-//Adafruit_DCMotor *myMotor2 = AFMS.getMotor(2);
+Adafruit_DCMotor *myMotor2 = AFMS.getMotor(2);
 
 char field_separator  = ' ';
 char command_separator = ';';
@@ -22,11 +22,22 @@ void on_left() {
   Serial.println("forward");
   myMotor->run(FORWARD);
   delay(5);
-  
 }
 
 void on_right() {
   Serial.println("backup");
+  myMotor->run(BACKWARD);
+  delay(5);
+}
+
+void on_down() {
+  Serial.println("forward_down");
+  myMotor->run(FORWARD);
+  delay(5);
+}
+
+void on_up() {
+  Serial.println("backup_up");
   myMotor->run(BACKWARD);
   delay(5);
 }
@@ -43,15 +54,15 @@ void setup() {
   cmdMessenger.attach(still, on_still);
   cmdMessenger.attach(left, on_left);
   cmdMessenger.attach(right, on_right);
+  cmdMessenger.attach(up, on_up);
+  cmdMessenger.attach(down, on_down);
 
   AFMS.begin();  // create with the default frequency 1.6KHz
 
-  myMotor->setSpeed(100);
+  myMotor->setSpeed(250);
   myMotor->run(FORWARD);
   myMotor->run(RELEASE);
-  
 }
-
 
 void loop() {
   uint8_t i;
